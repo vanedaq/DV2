@@ -1,147 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>💰 Organizador Financiero</title>
-
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#6a74f7" />
-  <link rel="apple-touch-icon" href="icon-192.png" />
-
-  <link rel="icon" href="icon-192.png">
-  <link rel="stylesheet" href="style.app.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organizador Financiero</title>
+  <link rel="stylesheet" href="style.app.css">
 </head>
 <body>
-  <header class="hero">
-    <div class="hero__top">
-      <h1>💰 Organizador Financiero</h1>
-      <div class="hero__controls">
-        <select id="mesSelector" class="select"></select>
-        <button id="exportBtn" class="btn btn-secondary">📥 Exportar</button>
-        <button id="resetBtn" class="btn btn-danger">🧹 Reset</button>
-      </div>
-    </div>
-
-    <div class="summary">
-      <div class="card ing"><h4>Ingresos</h4><div id="sumIngresos">$0</div></div>
-      <div class="card fix"><h4>Fijos</h4><div id="sumFijos">$0</div></div>
-      <div class="card tar"><h4>Tarjetas</h4><div id="sumTarjetas">$0</div></div>
-      <div class="card cre"><h4>Créditos</h4><div id="sumCreditos">$0</div></div>
-      <div class="card com"><h4>Compras</h4><div id="sumCompras">$0</div></div>
-      <div class="card aho"><h4>Ahorros</h4><div id="sumAhorros">$0</div></div>
-      <div class="card tot"><h4>Total Gastos</h4><div id="sumGastos">$0</div></div>
-      <div class="card lib"><h4>Disponible</h4><div id="sumLibre">$0</div></div>
-    </div>
+  <header>
+    <h1>💰 Organizador Financiero</h1>
+    <select id="mesSelector"></select>
+    <button id="exportBtn">📤 Exportar</button>
+    <button id="resetBtn">🧹 Reset</button>
   </header>
 
-  <nav class="tabs">
-    <button class="tab active" data-tab="dashboard">📊 Dashboard</button>
-    <button class="tab" data-tab="ingresos">💵 Ingresos</button>
-    <button class="tab" data-tab="fijos">🏠 Fijos</button>
-    <button class="tab" data-tab="tarjetas">💳 Tarjetas</button>
-    <button class="tab" data-tab="creditos">🏦 Créditos</button>
-    <button class="tab" data-tab="compras">🛒 Compras</button>
-    <button class="tab" data-tab="ahorros">💎 Ahorros</button>
-    <button class="tab" data-tab="consejos">💡 Consejos</button>
-  </nav>
+  <div class="container">
+    <!-- ====== Resumen ====== -->
+    <div class="summary">
+      <div class="summary-card card-ingresos">
+        <h3>Ingresos</h3>
+        <b id="sumIngresos">$ 0</b>
+      </div>
+      <div class="summary-card card-fijos">
+        <h3>Fijos</h3>
+        <b id="sumFijos">$ 0</b>
+      </div>
+      <div class="summary-card card-tarjetas">
+        <h3>Tarjetas</h3>
+        <b id="sumTarjetas">$ 0</b>
+      </div>
+      <div class="summary-card card-creditos">
+        <h3>Créditos</h3>
+        <b id="sumCreditos">$ 0</b>
+      </div>
+      <div class="summary-card card-compras">
+        <h3>Compras</h3>
+        <b id="sumCompras">$ 0</b>
+      </div>
+      <div class="summary-card card-ahorros">
+        <h3>Ahorros</h3>
+        <b id="sumAhorros">$ 0</b>
+      </div>
+      <div class="summary-card card-gastos">
+        <h3>Total Gastos</h3>
+        <b id="sumGastos">$ 0</b>
+      </div>
+      <div class="summary-card card-libre">
+        <h3>Disponible</h3>
+        <b id="sumLibre">$ 0</b>
+      </div>
+    </div>
 
-  <main class="content">
-    <!-- Dashboard -->
-    <section id="dashboard" class="panel">
-      <div class="section">
-        <h2>📈 Análisis del Mes</h2>
-        <div id="analisisMensual"></div>
-      </div>
-      <div class="section">
-        <h2>🎯 Metas de Ahorro</h2>
-        <div id="metasAhorro"></div>
-      </div>
-      <div class="section">
-        <h2>📊 Historial</h2>
-        <div id="tablaHistorial"></div>
-      </div>
-    </section>
+    <!-- ====== Tabs ====== -->
+    <div class="tabs">
+      <div class="tab active" data-tab="dashboard">📊 Dashboard</div>
+      <div class="tab" data-tab="ingresos">💵 Ingresos</div>
+      <div class="tab" data-tab="fijos">🏠 Fijos</div>
+      <div class="tab" data-tab="tarjetas">💳 Tarjetas</div>
+      <div class="tab" data-tab="creditos">🏦 Créditos</div>
+      <div class="tab" data-tab="compras">🛒 Compras</div>
+      <div class="tab" data-tab="ahorros">💎 Ahorros</div>
+      <div class="tab" data-tab="consejos">💡 Consejos</div>
+    </div>
 
-    <!-- Ingresos -->
-    <section id="ingresos" class="panel hidden">
-      <div class="section-header">
-        <h2>💵 Ingresos</h2>
-        <button id="addIngreso" class="btn btn-primary">+ Agregar</button>
-      </div>
+    <!-- ====== Panel Dashboard ====== -->
+    <div id="dashboard" class="panel">
+      <h2>📊 Análisis del Mes</h2>
+      <div id="analisisMensual"></div>
+      <h2>🎯 Metas de Ahorro</h2>
+      <div id="metasAhorro"></div>
+      <h2>📈 Historial</h2>
+      <div id="tablaHistorial"></div>
+    </div>
+
+    <!-- ====== Paneles de Datos ====== -->
+    <div id="ingresos" class="panel hidden">
+      <h2>💵 Ingresos</h2>
+      <button id="addIngreso">+ Agregar</button>
       <div id="listaIngresos"></div>
-    </section>
+    </div>
 
-    <!-- Fijos -->
-    <section id="fijos" class="panel hidden">
-      <div class="section-header">
-        <h2>🏠 Gastos Fijos</h2>
-        <button id="addFijo" class="btn btn-primary">+ Agregar</button>
-      </div>
+    <div id="fijos" class="panel hidden">
+      <h2>🏠 Gastos Fijos</h2>
+      <button id="addFijo">+ Agregar</button>
       <div id="listaFijos"></div>
-    </section>
+    </div>
 
-    <!-- Tarjetas -->
-    <section id="tarjetas" class="panel hidden">
-      <div class="section-header">
-        <h2>💳 Tarjetas de Crédito</h2>
-        <button id="addTarjeta" class="btn btn-warning">+ Agregar</button>
-      </div>
+    <div id="tarjetas" class="panel hidden">
+      <h2>💳 Tarjetas</h2>
+      <button id="addTarjeta">+ Agregar</button>
       <div id="listaTarjetas"></div>
-    </section>
+    </div>
 
-    <!-- Créditos -->
-    <section id="creditos" class="panel hidden">
-      <div class="section-header">
-        <h2>🏦 Créditos Bancarios</h2>
-        <button id="addCredito" class="btn btn-primary">+ Agregar</button>
-      </div>
+    <div id="creditos" class="panel hidden">
+      <h2>🏦 Créditos</h2>
+      <button id="addCredito">+ Agregar</button>
       <div id="listaCreditos"></div>
-    </section>
+    </div>
 
-    <!-- Compras -->
-    <section id="compras" class="panel hidden">
-      <div class="section-header">
-        <h2>🛒 Compras</h2>
-        <button id="addCompra" class="btn btn-primary">+ Agregar</button>
-      </div>
+    <div id="compras" class="panel hidden">
+      <h2>🛒 Compras</h2>
+      <button id="addCompra">+ Agregar</button>
       <div id="listaCompras"></div>
-    </section>
+    </div>
 
-    <!-- Ahorros -->
-    <section id="ahorros" class="panel hidden">
-      <div class="section-header">
-        <h2>💎 Metas de Ahorro</h2>
-        <button id="addAhorro" class="btn btn-success">+ Nueva Meta</button>
-        <!-- botón “extra” por si tu JS lo busca -->
-        <button id="addAhorro2" class="btn btn-success" style="display:none">+ Nueva Meta</button>
-      </div>
+    <div id="ahorros" class="panel hidden">
+      <h2>💎 Ahorros</h2>
+      <button id="addAhorro">+ Agregar</button>
       <div id="listaAhorros"></div>
-    </section>
+    </div>
 
-    <!-- Consejos -->
-    <section id="consejos" class="panel hidden">
-      <div class="section">
-        <h2>💡 Consejos Financieros</h2>
-        <div id="recomendaciones"></div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Modal -->
-  <div id="modal" class="modal" aria-hidden="true">
-    <div class="modal__content">
-      <div class="modal__header">
-        <h3 id="modalTitle">Formulario</h3>
-        <button id="closeModal" class="modal__close" aria-label="Cerrar">×</button>
-      </div>
-      <form id="modalForm" class="modal__body"></form>
+    <div id="consejos" class="panel hidden">
+      <h2>💡 Consejos</h2>
+      <div id="recomendaciones"></div>
     </div>
   </div>
 
-  <!-- Toast -->
-  <div id="toast" class="toast"></div>
+  <!-- Modal -->
+  <div class="modal hidden" id="modal" aria-hidden="true">
+    <div class="content">
+      <h3 id="modalTitle"></h3>
+      <form id="modalForm"></form>
+      <button id="closeModal" class="cancel">Cerrar</button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
 
   <script src="app.app.js"></script>
 </body>
