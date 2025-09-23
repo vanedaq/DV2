@@ -756,3 +756,5 @@ class Finanzas {
 }
 
 window.app = new Finanzas();
+/ /   C a c h e   b u s t e r   -   0 9 / 2 3 / 2 0 2 5   2 2 : 0 8 : 3 9  
+ 
